@@ -1,4 +1,4 @@
 # hackUMBC2023
 Our hackUMBC2023 Project
-this project is aimed at creating a Chrome extension that is capable of taking a youtube video that the user is watching and logging the youtube time frame and creating
-a link to the youtube time frame and allowing the user to take notes under the link
+this project is aimed at creating a web extension using python and flask that will grab weather data for the zipcode the user inputs
+and based on the weather data/date will recommend a movie based on that
