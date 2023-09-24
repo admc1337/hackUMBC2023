@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Weather Web App! hackUMBC '23</h1>
+<p>Enter Zip Code</p>
+
+{% for post in posts %}
+    <h1>{{ post.title }}</h1>
+    <p>By {{ post.author }} </p>
+    <p>{{ post.content }}</p>
+{% endfor %}
+{% endblock content %} 
