@@ -22,7 +22,9 @@ def home():
     form = myForm()
     if form.validate_on_submit():
         flash(f'Zip Code at {form.zipcode.data} Found.', 'success')
-        return redirect(url_for('results'))    
+        return redirect(url_for('results'))
+    else:
+        form.validate()
     return render_template('home.html', title='Home', form=form)
     #return render_template('home.html', posts=posts)
 
