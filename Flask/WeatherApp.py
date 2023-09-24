@@ -1,29 +1,42 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, ZipCodeForm
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'd5c919d9ca2cc6d410ba11b8070f7314'
 posts = [
     {
-        'author': 'Joel Davis',
-        'title': 'Weather Web App',
-        'content': 'Weather Input'
+        'author': 'Username',
+        'title': 'Area in Zip Code',
+        'content': 'Current Weather'
     },
     {
-        'author': 'Joel Davis2',
-        'title': 'Weather Web App2',
-        'content': 'Weather Results'
+        'author': 'Username',
+        'title': 'Movie Recommendation',
+        'content': 'Synopsis, Year, etc'
     }
 ]
 
 @app.route("/")
-@app.route("/home")
+@app.route("/home", methods=['GET', 'POST'])
 def home():
-    return render_template('home.html', posts=posts)
+    form = ZipCodeForm()
+    if form.validate_on_submit():
+        flash(f'Zip Code Found.', 'success')
+        return redirect(url_for('results'))    
+    return render_template('home.html', title='Home', form=form)
+    #return render_template('home.html', posts=posts)
 
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+@app.route("/results")
+def results():
+    return render_template('results.html', title='Results')
+
+@app.route("/error")
+def error():
+    return render_template('error.html', title='Page Error')
     
 @app.route("/register", methods=['GET', 'POST'])
 def register():

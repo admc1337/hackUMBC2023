@@ -1,6 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
+
+class ZipCodeForm(FlaskForm):
+    zipcode = IntegerField('ZipCode', 
+                         validators=[Length(min=5,max=8)])
+    email = StringField('Email', 
+                        validators=[DataRequired(), Email()])
+    submit = SubmitField('Search Weather')
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', 
@@ -20,3 +27,4 @@ class LoginForm(FlaskForm):
                              validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
+    
