@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class myForm(FlaskForm):
     zipcode = StringField('ZipCode', 
-                         validators=[Length(min=5,max=8)])
+                         validators=[Length(min=5,max=10)])
     submit = SubmitField('Search Weather')
 
 class RegistrationForm(FlaskForm):
